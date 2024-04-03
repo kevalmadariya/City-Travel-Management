@@ -1,0 +1,160 @@
+{% include 'head.html' %}
+{% include 'header.html' %}
+    <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="container">
+            <div class="booking p-5">
+                <div class="row g-5 align-items-center">
+                    <div class="col-md-6 text-white">
+                        <h6 class="text-white text-uppercase">Booking</h6>
+                        <h1 class="text-white mb-4">Online Booking</h1>
+                        <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit.</p>
+                        <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet</p>
+                        <a class="btn btn-outline-light py-3 px-5 mt-2" href="">Read More</a>
+                    </div>
+                    <div class="col-md-6">
+                        {% if request.session.is_trip_editable %}
+                        <h1 class="text-white mb-4">Edit A Trip plan</h1>
+                        {% else %}
+                        <h1 class="text-white mb-4">Add A Trip plan</h1>
+                        {% endif %}
+                        <form method="post" enctype="multipart/form-data">
+                        {% for message in messages %}
+                           <h2 style="color:red">{{ message }}</h2>
+                        {% endfor %}
+                            {% csrf_token %}
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="text" name="name" class="form-control bg-transparent" id="name" placeholder="Your Name" value="{{trip_plan_instance.trip_name}}" required>
+                                        <label for="name">Trip Name</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <select class="form-select bg-transparent" name="city" id="city"  required>
+                                            <option value="{{ trip_plan_instance.city }}">{{ trip_plan_instance.city }}</option>
+                                            <option value="Ahmedabad">Ahmedabad</option>
+                                            <option value="Amreli">Amreli</option>
+                                            <option value="Anand">Anand</option>
+                                            <option value="Ankleshwar">Ankleshwar</option>
+                                            <option value="Bharuch">Bharuch</option>
+                                            <option value="Bhavnagar">Bhavnagar</option>
+                                            <option value="Bhuj">Bhuj</option>
+                                            <option value="Botad">Botad</option>
+                                            <option value="Dahod">Dahod</option>
+                                            <option value="Deesa">Deesa</option>
+                                            <option value="Gandhidham">Gandhidham</option>
+                                            <option value="Gandhinagar">Gandhinagar</option>
+                                            <option value="Godhra">Godhra</option>
+                                            <option value="Jamnagar">Jamnagar</option>
+                                            <option value="Junagadh">Junagadh</option>
+                                            <option value="Kachchh">Kachchh</option>
+                                            <option value="Kheda">Kheda</option>
+                                            <option value="Mehsana">Mehsana</option>
+                                            <option value="Modasa">Modasa</option>
+                                            <option value="Morbi">Morbi</option>
+                                            <option value="Nadiad">Nadiad</option>
+                                            <option value="Navsari">Navsari</option>
+                                            <option value="Palanpur">Palanpur</option>
+                                            <option value="Patan">Patan</option>
+                                            <option value="Porbandar">Porbandar</option>
+                                            <option value="Rajkot">Rajkot</option>
+                                            <option value="Surendranagar">Surendranagar</option>
+                                            <option value="Surat">Surat</option>
+                                            <option value="Vadodara (Baroda)">Vadodara (Baroda)</option>
+                                            <option value="Vapi">Vapi</option>
+                                            <option value="Veraval">Veraval</option>
+                                                                                    </select>
+                                        <label for="select1">City</label>
+                                    </div>
+                                </div>
+                                <!-- <div class="col-12"> -->
+                                    <!-- <a class="btn btn-outline-light w-100 py-3" href="make_session">ADD attractions</a> -->
+                                <!-- </div> -->
+                                {{ form.as_p }}
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="number" name="price" class="form-control bg-transparent" id="email" placeholder="Price" value="{{trip_plan_instance.price}}" required>
+                                        <label for="email">Price</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating date" id="date3" data-target-input="nearest" >
+                                        <input type="text" name="capacity" class="form-control bg-transparent datetimepicker-input" id="datetime"  value="{{trip_plan_instance.capacity}}" placeholder="Date & Time" data-target="#date3" data-toggle="datetimepicker" required />
+                                        <label for="datetime">Capacity</label>
+                                    </div>
+                                </div>
+                                
+                                <!-- //date -->
+
+                                <div class="col-md-6">
+                                    <div class="form-floating date" id="date3" data-target-input="nearest">
+                                        <input type="date" name="depa_date" value="{{ trip_plan_instance.departure_date | date:'Y-m-d' }}" class="form-control bg-transparent datetimepicker-input" id="datetime" placeholder="Date & Time" data-target="#date3" data-toggle="datetimepicker" required />
+                                        <label for="datetime">Departure Date</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating date" id="date3" data-target-input="nearest">
+                                        <input type="date" name="return_date" value="{{ trip_plan_instance.return_date | date:'Y-m-d' }}" class="form-control bg-transparent datetimepicker-input" id="datetime" placeholder="Date & Time" data-target="#date3" data-toggle="datetimepicker" required />
+                                        <label for="datetime">Return Date</label>
+                                    </div>
+                                </div>
+                                
+                                <!-- //time -->
+                                <div class="col-md-6">
+                                    <div class="form-floating date" id="date3" data-target-input="nearest">
+                                        <input type="time" name="depa_time" value="{{trip_plan_instance.departure_time | time:'H:i:s'}}" class="form-control bg-transparent datetimepicker-input" id="datetime" placeholder="Date & Time" data-target="#date3" data-toggle="datetimepicker" required/>
+                                        <label for="datetime">Departure Time</label>
+                                    </div>
+                                </div><div class="col-md-6">
+                                    <div class="form-floating date" id="date3" data-target-input="nearest">
+                                        <input type="time" name="return_time" value="{{trip_plan_instance.return_time | time:'H:i:s'}}" class="form-control bg-transparent datetimepicker-input" id="datetime" placeholder="Date & Time" data-target="#date3" data-toggle="datetimepicker" required />
+                                        <label for="datetime">Return Time</label>
+                                    </div>
+                                </div>
+                                <!-- //place -->
+                                <div class="col-md-6">
+                                    <div class="form-floating date" id="date3" data-target-input="nearest">
+                                        <input type="text" name="depa_place" value="{{trip_plan_instance.departure_place}}" class="form-control bg-transparent datetimepicker-input" id="datetime" placeholder="Date & Time" data-target="#date3" data-toggle="datetimepicker" required />
+                                        <label for="datetime">Departure Place</label>
+                                    </div>
+                                </div>
+                               <div class="col-md-6">
+                                    <div class="form-floating date" id="date3" data-target-input="nearest">
+                                        <input type="text" name="return_place" value="{{trip_plan_instance.return_place}}" class="form-control bg-transparent datetimepicker-input" id="datetime" placeholder="Date & Time" data-target="#date3" data-toggle="datetimepicker" required />
+                                        <label for="datetime">Return Place</label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-floating">
+                                        <p style="color: white;">Upload Thumbnail (you should have attractive thumbnail)</p>
+                                        <input type="file" name="thumbnail" id="thumbnail">
+                                    </div>
+                                </div>
+                                <!-- //else -->
+                                <div class="col-12">
+                                    <div class="form-floating">
+                                        
+                                        <textarea name="special" class="form-control bg-transparent" placeholder="Special Request" id="message" style="height: 100px">{{ trip_plan_instance.extra_info }}</textarea>
+                                        <label for="message">What is Special?   </label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    {% if request.session.is_trip_editable %}
+                                    <button class="btn btn-outline-light w-100 py-3" type="submit">EDIT Now</button>
+                                    {% else %}
+                                    <button class="btn btn-outline-light w-100 py-3" type="submit">ADD Now</button>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+{% include 'footer.html' %}
+{% include 'script.html' %}
+

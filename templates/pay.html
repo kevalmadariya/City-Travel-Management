@@ -1,0 +1,198 @@
+
+
+
+
+{% extends 'book.html' %}
+
+{% block content %}
+
+
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+            <h6 class="section-title bg-white text-center text-primary px-3">CONFORMATION</h6>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="package-item">
+                    <div class="text-center p-4">
+                    <h3 class="mb-0">{{ pack.trip_name }}</h3>
+                     </div>
+                    <div >
+                        <img class="img-fluid" src="{{ pack.thumbnail }}" height="300" width="100%">
+                    </div>
+
+<style>
+    #gallery {
+        position: relative;
+        width: 100%;
+        max-width: 600px; /* Adjust max-width as needed */
+        margin: 0 auto;
+    }
+    
+    #gallery img {
+        display: none;
+        width: 100%;
+        height: 350;
+    }
+    #gallery img:hover {
+        max-width: 100%; /* Adjust as needed */
+        max-height: 100%; /* Adjust as needed */
+    }
+    
+    .img-fluid {
+        max-width: 100%; /* Or set it to an absolute value, like max-width: 300px; */
+        height: auto; /* Maintain aspect ratio */
+    }
+    #attractionName {
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: rgba(0, 0, 0, 0.7);
+        color: #fff;
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-size: 14px;
+    }
+    #prev, #next {
+        position: absolute;
+        top: 45%;
+        transform: translateY(-50%);
+        font-size: 24px;
+        cursor: pointer;
+        background: none;
+        border: none;
+        color: #000;
+    }
+    #prev {
+        left: -50px;
+    }
+    #next {
+        right: -50px;
+    }
+</style>
+
+<div class="text-center p-4">
+    <h5 class="mb-0"></h5>
+<br>
+<div class="text-center p-4">
+    <div class="d-flex border-bottom">
+        <small class="flex-fill text-center border-end py-2"><i class="fa fa-map-marker-alt text-primary me-2"></i>{{ pack.city }}</small>
+        <small class="flex-fill text-center border-end py-2"><i class="fa fa-calendar-alt text-primary me-2"></i>{{ pack.duration }}</small>
+        <small class="flex-fill text-center py-2"><i class="fa fa-user text-primary me-2"></i>{{ passenger|length }} Person</small>
+    </div>
+    </div>
+
+                        <!-- //date,time,place -->
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <table class="table">
+                                        <tbody>
+                                            <tr>
+                                                <th colspan="2"><strong>Departure</strong></th>
+                                            </tr>
+                                            <tr>
+                                                <td><i class="fa fa-calendar-alt text-primary me-2"></i> {{ pack.departure_date }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><i class="fa fa-clock text-primary me-2"></i> {{ pack.departure_time }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><i class="fa fa-map-marker-alt text-primary me-2"></i> {{ pack.departure_place }}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="col-md-6" style="border-left: 1px solid #ccc;">
+                                    <table class="table">
+                                        <tbody>
+                                            <tr>
+                                                <th colspan="2"><strong>Return</strong></th>
+                                            </tr>
+                                            <tr>
+                                                <td><i class="fa fa-calendar-alt text-primary me-2"></i> {{ pack.return_date }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><i class="fa fa-clock text-primary me-2"></i> {{ pack.return_time }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><i class="fa fa-map-marker-alt text-primary me-2"></i> {{ pack.return_place }}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <br>
+                            <!-- <h3 class="mb-0">{{ pack.price }}Rs.</h3> -->
+
+                        <!-- //date,time,place -->
+                        <!-- //passenger -->
+                        <h3 class="mb-0">Passenger</h3>
+                        <div class="row">
+                            <div class="col-md-8">
+                                <table class="table">
+                                    <tbody>
+                                        <tr>
+                                            <th colspan="2"><strong>Name</strong></th>
+                                        </tr>
+                                        {% for pass in passenger %}
+                                        <tr>
+                                            <td><i class="fa fa-user text-primary me-2"></i> {{pass.name}}</td>
+                                        </tr>
+                                        {% endfor %}
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="col-md-2" style="border-left: 1px solid #ccc;">
+                                <table class="table">
+                                    <tbody>
+                                        <tr>
+                                            <th colspan="2"><strong>Age</strong></th>
+                                        </tr>
+                                        {% for pass in passenger %}
+                                        <tr>
+                                            <td> {{pass.age}}</td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        
+                            <h3 class="mb-0">{{ total }}Rs.</h3>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+    <form class="text-center border border-light p-5" action="success" method="POST">
+        {% csrf_token %}
+        <!-- RAZORPAY INTEGRATION HERE -->
+<script
+src="https://checkout.razorpay.com/v1/checkout.js"
+data-key="rzp_test_6dq9f5n25OyVzT" 
+data-amount="{{amount}}" 
+data-currency="INR"
+data-order_id="{{payment.id}}"
+data-buttontext="Pay"
+data-name="Acme Corp"
+data-description="A Wild Sheep Chase is the third novel by Japanese author Haruki Murakami"
+data-image="https://example.com/your_logo.jpg"
+data-prefill.name="{{request.session.username}}"
+data-prefill.email="{{request.session.email}}"
+data-theme.color="#F37254"
+></script>  
+
+    </form>
+
+</div>
+
+
+</div>
+{% endblock %}

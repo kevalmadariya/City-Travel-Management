@@ -1,0 +1,53 @@
+  =>  Template Name    : Tourist - Travel Agency HTML Template
+
+  =>  Template Link    : https://htmlcodex.com/travel-agency-html-template
+
+  =>  Template License : https://htmlcodex.com/license (or read the LICENSE.txt file)
+
+  =>  Template Author  : HTML Codex
+
+  =>  Author Website   : https://htmlcodex.com
+
+  =>  About HTML Codex : HTML Codex is one of the top creators and publishers of Free HTML templates, HTML landing pages, HTML email templates and HTML snippets in the world. Read more at ( https://htmlcodex.com/about-us )
+
+
+  Example Agent Form Data 1:
+
+Username: cityexplorer
+Agency Name: CityScape Tours
+Email: explore@cityscape.com
+Password: city1234
+GST Number: CITY123456789
+UPI ID: cityexplorer@upi
+Agency Logo: [Upload an image]
+About Us: Discover the hidden gems of our city with CityScape Tours! We offer unique and immersive experiences that showcase the best our city has to offer.
+Example Agent Form Data 2:
+
+Username: urbantrekkers
+Agency Name: Urban Adventures
+Email: info@urbanadventures.com
+Password: urban456
+GST Number: URBAN789012345
+UPI ID: urbantrekkers@upi
+Agency Logo: [Upload an image]
+About Us: Dive into the heart of our vibrant city with Urban Adventures! Our expert guides will lead you on unforgettable urban explorations filled with culture, history, and excitement.
+Example Agent Form Data 3:
+
+Username: citywanderer
+Agency Name: CityWise Expeditions
+Email: wanderer@citywise.com
+Password: wander789
+GST Number: WISE456789012
+UPI ID: citywanderer@upi
+Agency Logo: [Upload an image]
+About Us: Experience the essence of our city with CityWise Expeditions! We specialize in curated tours and experiences that delve deep into the local culture and lifestyle.
+Example Agent Form Data 4:
+
+Username: metropolisexplorer
+Agency Name: Metropolis Tours
+Email: info@metropolistours.com
+Password: metro123
+GST Number: METRO901234567
+UPI ID: metropolisexplorer@upi
+Agency Logo: [Upload an image]
+About Us: Uncover the wonders of our bustling metropolis with Metropolis Tours! Let us guide you on unforgettable journeys through the vibrant streets and iconic landmarks of our city.

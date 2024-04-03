@@ -1,0 +1,35 @@
+{% include 'head.html' %}
+{% include 'header.html' %}
+<style>
+    input#id_username::placeholder,input#id_agency_name::placeholder,input#id_email_id::placeholder,input#id_password::placeholder,input#id_gst_no::placeholder,input#id_upi_id::placeholder,textarea#id_about_us::placeholder{
+        color:rgba(171, 170, 170, 0.695);
+    }
+</style>
+<div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
+    <div class="container">
+        <div class="booking p-5">
+            <div class="row g-5 align-items-center justify-content-center">
+               
+                <div class="col-md-6">
+                    <h1 class="text-white mb-4 text-center">Agent Login</h1>
+                    {% for message in messages %}
+                    <li style="color:red">{{message}}</li>
+                    {% endfor %}
+                    <form method="POST" enctype="multipart/form-data" class="mx-auto">
+                        {% csrf_token %}
+                        <!-- {{ form.as_p }} -->
+                        {{form.username}}<br>
+                        {{form.password}}<br>
+                        <div class="col-12">
+                            <button class="btn btn-outline-light w-100 py-3" style="color: black; background:white;" type="submit">Login</button>
+                        </div>
+                    </form>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% include 'footer.html' %}
+{% include 'script.html' %}
